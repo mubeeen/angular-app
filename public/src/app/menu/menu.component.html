@@ -1,0 +1,18 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Menu</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+
+<!-- Use of ngIf and ngTemplate directives-->
+
+<div *ngIf="show; else hide">
+    <h4 id="catHeader">View Food Category : </h4>
+    <br>
+    <a id="catNav" (click)= "IsShow()" routerLink="meal">Click to View!</a>
+</div>
+<ng-template #hide>
+    <router-outlet></router-outlet>
+    <a id = "catNav" (click)= "IsShow()" routerLink="../menu"> < back to menu!</a>
+</ng-template>

@@ -1,0 +1,77 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Signup</h1>
+      <p class="lead">This is the dummy website where you can easily test a signup and login functionality! Created by: mubeen100989</p>
+    </div>
+  </div>
+<div class="container">
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="exampleInputName">First Name:</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="First Name" ngModel name="FirstName" required>
+              </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label for="exampleInputLastName">Last Name:</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Last Name" ngModel name="LastName" required>
+              </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputGender">Gender:</label>
+        <div class="radio" *ngFor="let gender of genders">
+            <label>
+                <input 
+                type="radio" 
+                name="gender"
+                [value] = "gender"
+                ngModel
+                name="gender"
+                required
+                >
+                {{gender}}
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ngModel name="email" required email #email="ngModel"> 
+      <span class="help-block" *ngIf="!email.valid && email.touched">Please enter the valid text!</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ngModel name="password1">
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="container" *ngIf="submit">
+    <div class="row">
+        <h1>Your Entered Data:</h1>
+    </div>
+    <div class="row">
+        <th>
+            <tr>Name</tr>
+            <tr>Gender</tr>
+            <tr>Email</tr>
+            <tr>Password</tr>
+        </th>
+        <td>
+            <tr>{{user.Lname | reverse }} {{user.Fname}}</tr>
+            <tr>{{user.gender}}</tr>
+            <tr>{{user.email}}</tr>
+            <tr>{{user.password}}</tr>
+        </td>
+    </div>
+</div>
